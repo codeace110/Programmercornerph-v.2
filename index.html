@@ -5,6 +5,12 @@
     <title>Code Editor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/darcula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/theme/material.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/dialog/dialog.min.css">
+   
+  </head>
+  <body>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -15,10 +21,11 @@
         <div class="editor-tab" id="js-tab">JavaScript</div>
       </div>
       <div class="editor-content">
-        <textarea id="html-editor"></textarea>
-        <textarea id="css-editor"></textarea>
-        <textarea id="js-editor"></textarea>
+        <textarea id="html-editor">h</textarea>
+        <textarea id="css-editor">c</textarea>
+        <textarea id="js-editor">j</textarea>
       </div>
+      
       <button id="run-btn">Run</button>
       <div class="output-container">
         <iframe id="output"></iframe>
@@ -31,6 +38,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/htmlmixed/htmlmixed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
-    <script src="style.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/dialog/dialog.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/search/searchcursor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/search/search.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/comment/comment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/addon/wrap/hardwrap.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
