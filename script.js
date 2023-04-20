@@ -1,98 +1,104 @@
-let activeEditor = null;
-const htmlEditor = CodeMirror(document.querySelector('.html-editor'), {
-  mode: 'xml',
-  theme: 'monokai',
-  lineNumbers: true,
-  value: '<!-- Type your HTML code here -->',
-});
-const cssEditor = CodeMirror(document.querySelector('.css-editor'), {
-  mode: 'css',
-  theme: 'monokai',
-  lineNumbers: true,
-  value: '/* Type your CSS code here */',
-});
-const jsEditor = CodeMirror(document.querySelector('.js-editor'), {
-  mode: 'javascript',
-  theme: 'monokai',
-  lineNumbers: true,
-  value: '// Type your JavaScript code here',
-});
-
-// Set the active editor to the HTML editor by default
-activeEditor = htmlEditor;
-
-// Define the buttons
-const runButton = document.querySelector('.run-button');
-const htmlButton = document.querySelector('.html-button');
-const cssButton = document.querySelector('.css-button');
-const jsButton = document.querySelector('.js-button');
-
-// Function to switch between editors
-function switchEditor(type) {
-  // Remove the active class from all buttons
-  document.querySelectorAll('.buttons button').forEach(button => {
-    button.classList.remove('active');
+// Initialize CodeMirror editors
+var htmlEditor = CodeMirror.fromTextArea(document.getElementById("html-editor"), {
+    mode: "htmlmixed",
+    theme: "darcula"
   });
-
-  // Add the active class to the clicked button
-  document.querySelector(`.buttons button[data-type=${type}]`).classList.add('active');
-
-  // Hide all editors
-  document.querySelectorAll('.editor').forEach(editor => {
-    editor.classList.remove('active');
+  var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
+    mode: "css",
+    theme: "darcula"
   });
-
-  // Show the selected editor
-  if (type === 'html') {
-    activeEditor = htmlEditor;
-    cssEditor.setOption('theme', 'default');
-    jsEditor.setOption('theme', 'default');
-    document.querySelector('.html-editor').classList.add('active');
-  } else if (type === 'css') {
-    activeEditor = cssEditor;
-    htmlEditor.setOption('theme', 'default');
-    jsEditor.setOption('theme', 'default');
-    cssEditor.setOption('theme', 'default');
-    document.querySelector('.css-editor').classList.add('active');
-  } else if (type === 'javascript') {
-    activeEditor = javascriptEditor;
-    htmlEditor.setOption('theme', 'default');
-    jsEditor.setOption('theme', 'default');
-    cssEditor.setOption('theme', 'default');
-    document.querySelector('.javascript-editor').classList.add('active');
+  var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
+    mode: "javascript",
+    theme: "darcula"
+  });
+  
+  // Get the tabs and content elements
+  var htmlTab = document.getElementById("html-tab");
+  var cssTab = document.getElementById("css-tab");
+  var jsTab = document.getElementById("js-tab");
+  var editorContent = document.querySelector(".editor-content");
+  
+  // Set the initial active tab and editor
+  htmlTab.classList.add("active");
+  htmlEditor.refresh();
+  
+  // Add click event listeners to the tabs
+  htmlTab.addEventListener("click", function() {
+    setActiveTab(htmlTab);
+    showEditor(htmlEditor);
+  });
+  cssTab.addEventListener("click", function() {
+    setActiveTab(cssTab);
+    showEditor(cssEditor);
+  });
+  jsTab.addEventListener("click", function() {
+    setActiveTab(jsTab);
+    showEditor(jsEditor);
+  });
+  
+  // Function to set the active tab
+  function setActiveTab(tab) {
+    var tabs = document.querySelectorAll(".editor-tab");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.remove("active");
+    }
+    tab.classList.add("active");
   }
-}
-
-  function runCode() {
-    output.innerHTML = "";
-    const iframe = document.createElement("iframe");
-    document.body.appendChild(iframe);
-    const iframeContent = `<html><head><style>${cssEditor.getValue()}</style></head><body>
-        ${htmlEditor.getValue()}<script>${jsEditor.getValue()}</script></body></html>`;
-
-    const iframeDoc = iframe.contentWindow.document;
-    iframeDoc.open();
-    iframeDoc.write(iframeContent);
-    iframeDoc.close();
-
-    runButton.addEventListener("click", runCode);
-
-    htmlButton.addEventListener("click", () => {
-      activeEditor.setOption("theme", "default");
-      htmlEditor.setOption("theme", "material-darker");
-      activeEditor = htmlEditor;
-    });
-
-    cssButton.addEventListener("click", () => {
-      activeEditor.setOption("theme", "default");
-      cssEditor.setOption("theme", "material-darker");
-      activeEditor = cssEditor;
-    });
-
-    jsButton.addEventListener("click", () => {
-      activeEditor.setOption("theme", "default");
-      jsEditor.setOption("theme", "material-darker");
-      activeEditor = jsEditor;
-    });
+  
+  // Function to show the selected editor
+  function showEditor(editor) {
+    var editors = document.querySelectorAll(".CodeMirror");
+    for (var i = 0; i < editors.length; i++) {
+      editors[i].style.display = "none";
+    }
+    editorContent.style.display = "block";
+    editor.refresh();
   }
-
+  
+  // Add click event listener to the run button
+  var runBtn = document.getElementById("run-btn");
+  runBtn.addEventListener("click", function() {
+    // Get the code from each editor
+    var htmlCode = htmlEditor.getValue();
+    var cssCode = cssEditor.getValue();
+    var jsCode = jsEditor.getValue();
+  
+    // Create the HTML file contents
+    var htmlFile = "<!DOCTYPE html>\n";
+    htmlFile += "<html>\n";
+    htmlFile += "<head>\n";
+    htmlFile += "<meta charset=\"UTF-8\">\n";
+    htmlFile += "<title>Code Editor Output</title>\n";
+    htmlFile += "<style>\n";
+    htmlFile += cssCode + "\n";
+    htmlFile += "</style>\n";
+    htmlFile += "</head>\n";
+    htmlFile += "<body>\n";
+    htmlFile += htmlCode + "\n";
+    htmlFile += "<script>\n";
+    htmlFile += jsCode + "\n";
+    htmlFile += "</script>\n";
+    htmlFile += "</body>\n";
+    htmlFile += "</html>";
+  
+    // Set the HTML file contents to the output iframe
+    var output = document.getElementById("output").contentWindow.document;
+    output.open();
+    output.write(htmlFile);
+    output.close();
+  });
+  
+  // Add click event listener to the save button
+  var saveBtn = document.getElementById("save-btn");
+  saveBtn.addEventListener("click", function() {
+    // Get the code from each editor
+    var htmlCode = htmlEditor.getValue();
+    var cssCode = cssEditor.getValue();
+    var jsCode = jsEditor.getValue();
+  
+    // Create a new Blob object with the HTML file contents
+    var fileContents = "<!DOCTYPE html>\n";
+    fileContents += "<html>\n";
+    fileContents += "<head>\n";
+    fileContents +=
+  
