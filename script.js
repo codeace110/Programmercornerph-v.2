@@ -1,50 +1,52 @@
 // Initialize CodeMirror editors
 var htmlEditor = CodeMirror.fromTextArea(
-  document.getElementById("html-editor"),
-  {
-    mode: "htmlmixed",
-    theme: "darcula",
-    lineNumbers: true,
-    tabSize: 2,
-    matchBrackets: true,
-    autoCloseTags: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Ctrl-Q": function (cm) {
-        cm.foldCode(cm.getCursor());
+    document.getElementById("html-editor"),
+    {
+      mode: "htmlmixed",
+      theme: "darcula",
+      lineNumbers: true,
+      tabSize: 2,
+      matchBrackets: true,
+      autoCloseTags: true,
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Q": function (cm) {
+          cm.foldCode(cm.getCursor());
+        },
       },
-    },
-  }
-);
-var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
-    mode: "htmlmixed",
-    theme: "darcula",
-    lineNumbers: true,
-    tabSize: 2,
-    matchBrackets: true,
-    autoCloseTags: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Ctrl-Q": function (cm) {
-        cm.foldCode(cm.getCursor());
-      },
-    },
-});
-var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
-    mode: "htmlmixed",
-    theme: "darcula",
-    lineNumbers: true,
-    tabSize: 2,
-    matchBrackets: true,
-    autoCloseTags: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Ctrl-Q": function (cm) {
-        cm.foldCode(cm.getCursor());
-      },
-    },
+    }
+  );
   
-});
+  var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
+      mode: "css",
+      theme: "darcula",
+      lineNumbers: true,
+      tabSize: 2,
+      matchBrackets: true,
+      autoCloseTags: true,
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Q": function (cm) {
+          cm.foldCode(cm.getCursor());
+        },
+      },
+  });
+  
+  var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
+      mode: "javascript",
+      theme: "darcula",
+      lineNumbers: true,
+      tabSize: 2,
+      matchBrackets: true,
+      autoCloseTags: true,
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Q": function (cm) {
+          cm.foldCode(cm.getCursor());
+        },
+      },
+  });
+  
 
 // Get the tabs and content elements
 var htmlTab = document.getElementById("html-tab");
