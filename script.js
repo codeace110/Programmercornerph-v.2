@@ -1,53 +1,67 @@
 // Initialize CodeMirror editors
 var htmlEditor = CodeMirror.fromTextArea(
-    document.getElementById("html-editor"),
-    {
-      mode: "htmlmixed",
-      theme: "darcula",
-      lineNumbers: true,
-      tabSize: 2,
-      matchBrackets: true,
-      autoCloseTags: true,
-      extraKeys: {
-        "Ctrl-Space": "autocomplete",
-        "Ctrl-Q": function (cm) {
-          cm.foldCode(cm.getCursor());
-        },
+  document.getElementById("html-editor"),
+  {
+    mode: "htmlmixed",
+    theme: "darcula",
+    lineNumbers: true,
+    tabSize: 2,
+    matchBrackets: true,
+    autoCloseTags: true,
+    value: `<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+      </head>
+      <body>
+          
+      </body>
+      </html>`,
+    extraKeys: {
+      "Ctrl-Space": "autocomplete",
+      "Ctrl-Q": function (cm) {
+        cm.foldCode(cm.getCursor());
       },
-    }
-  );
-  
-  var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
-      mode: "css",
-      theme: "darcula",
-      lineNumbers: true,
-      tabSize: 2,
-      matchBrackets: true,
-      autoCloseTags: true,
-      extraKeys: {
-        "Ctrl-Space": "autocomplete",
-        "Ctrl-Q": function (cm) {
-          cm.foldCode(cm.getCursor());
-        },
-      },
-  });
-  
-  var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
-      mode: "javascript",
-      theme: "darcula",
-      lineNumbers: true,
-      tabSize: 2,
-      matchBrackets: true,
-      autoCloseTags: true,
-      extraKeys: {
-        "Ctrl-Space": "autocomplete",
-        "Ctrl-Q": function (cm) {
-          cm.foldCode(cm.getCursor());
-        },
-      },
-  });
-  
+    },
+  }
+);
 
+var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
+  mode: "css",
+  theme: "darcula",
+  lineNumbers: true,
+  tabSize: 2,
+  matchBrackets: true,
+  autoCloseTags: true,
+  extraKeys: {
+    "Ctrl-Space": "autocomplete",
+    "Ctrl-Q": function (cm) {
+      cm.foldCode(cm.getCursor());
+    },
+  },
+});
+
+var jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
+  mode: "javascript",
+  theme: "darcula",
+  lineNumbers: true,
+  tabSize: 2,
+  matchBrackets: true,
+  autoCloseTags: true,
+  extraKeys: {
+    "Ctrl-Space": "autocomplete",
+    "Ctrl-Q": function (cm) {
+      cm.foldCode(cm.getCursor());
+    },
+  },
+});
+
+// Get the tabs and content elements
+
+// Function to set the active tab
 // Get the tabs and content elements
 var htmlTab = document.getElementById("html-tab");
 var cssTab = document.getElementById("css-tab");
@@ -55,9 +69,35 @@ var jsTab = document.getElementById("js-tab");
 
 var editorContent = document.querySelector(".editor-content");
 
+// Function to set the active tab
+function setActiveTab(tab) {
+  var tabs = document.querySelectorAll(".editor-tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove("active");
+  }
+  tab.classList.add("active");
+}
+
+// Function to show the selected editor
+function showEditor(editor) {
+  var editors = document.querySelectorAll(".CodeMirror");
+  for (var i = 0; i < editors.length; i++) {
+    if (editors[i] === editor.getWrapperElement()) {
+      editors[i].style.display = "block";
+    } else {
+      editors[i].style.display = "none";
+    }
+  }
+}
+
+function displayNone(editor){
+  editor.style.display = "none";
+}
+
 // Set the initial active tab and editor
-htmlTab.classList.add("active");
-htmlEditor.refresh();
+setActiveTab(htmlTab);
+showEditor(htmlEditor);
+
 
 // Add click event listeners to the tabs
 htmlTab.addEventListener("click", function () {
@@ -73,30 +113,19 @@ jsTab.addEventListener("click", function () {
   showEditor(jsEditor);
 });
 
-// Function to set the active tab
-function setActiveTab(tab) {
-    var tabs = document.querySelectorAll(".editor-tab");
-    for (var i = 0; i < tabs.length; i++) {
-      tabs[i].classList.remove("active");
-    }
-    tab.classList.add("active");
-  }
-  
+// Refresh the editors
+htmlEditor.refresh();
+cssEditor.refresh();
+jsEditor.refresh();
 
-// Function to show the selected editor
-function showEditor(editor) {
-    var editors = document.querySelectorAll(".CodeMirror");
-    for (var i = 0; i < editors.length; i++) {
-      if (editors[i] === editor) {
-        editors[i].style.display = "block";
-      } else {
-        editors[i].display.wrapper.style.display = "none";
-      }
-    }
-  }
-  
- 
 
+CodeMirror.registerHelper("hint", "javascript", [
+  "javascript",
+  "html",
+  "xml",
+  "css",
+  "sql",
+]);
 // Add click event listener to the run button
 var runBtn = document.getElementById("run-btn");
 runBtn.addEventListener("click", function () {

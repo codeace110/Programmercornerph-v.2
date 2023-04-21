@@ -61,6 +61,12 @@
     height: 100%;
     border: none;
   }
+
+
+  #css-editor, #js-editor {
+    display: none;
+  }
+  
   
 
   
