@@ -67,6 +67,70 @@
     display: none;
   }
   
+
+  .CodeMirror {
+    font-family: "Fira Code", monospace;
+    font-size: 16px;
+    color: #abb2bf;
+  }
   
+  .cm-comment {
+    color: #5c6370;
+  }
+  
+  .cm-string {
+    color: #98c379;
+  }
+  
+  .cm-keyword {
+    color: #c678dd;
+  }
+  
+  .cm-operator {
+    color: #56b6c2;
+  }
+  
+  .cm-variable {
+    color: #e06c75;
+  }
+  
+  .cm-variable-2 {
+    color: #61afef;
+  }
+  
+  .cm-def {
+    color: #d19a66;
+  }
+  
+  .cm-bracket {
+    color: #abb2bf;
+  }
+  
+  .cm-tag {
+    color: #e06c75;
+  }
+  
+  .cm-meta {
+    color: #5c6370;
+  }
+
+
+  .editors {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    height: 20px; /* set height to 50% of the viewport height */
+  }
+  .container{
+    width: 50vw;
+    height: 50vh;
+  }
+
+
+
 
   
