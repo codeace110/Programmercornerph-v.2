@@ -126,8 +126,8 @@
     height: 20px; /* set height to 50% of the viewport height */
   }
   .container{
-    width: 50vw;
-    height: 50vh;
+    width: 100vw;
+    height: 100vh;
   }
 
 
