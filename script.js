@@ -17,6 +17,7 @@ var htmlEditor = CodeMirror.fromTextArea(
   }
 );
 
+
 var cssEditor = CodeMirror.fromTextArea(document.getElementById("css-editor"), {
   mode: "css",
   theme: "darcula",
