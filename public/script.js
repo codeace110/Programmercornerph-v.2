@@ -124,22 +124,22 @@ runBtn.addEventListener("click", function () {
   var jsCode = jsEditor.getValue();
 
   // Create the HTML file contents
-  var htmlFile = "<!DOCTYPE html>\n";
-  htmlFile += "<html>\n";
-  htmlFile += "<head>\n";
-  htmlFile += '<meta charset="UTF-8">\n';
-  htmlFile += "<title>Code Editor Output</title>\n";
-  htmlFile += "<style>\n";
-  htmlFile += cssCode + "\n";
-  htmlFile += "</style>\n";
-  htmlFile += "</head>\n";
-  htmlFile += "<body>\n";
-  htmlFile += htmlCode + "\n";
-  htmlFile += "<script>\n";
-  htmlFile += jsCode + "\n";
-  htmlFile += "</script>\n";
-  htmlFile += "</body>\n";
-  htmlFile += "</html>";
+  // var htmlFile = "<!DOCTYPE html>\n";
+  // htmlFile += "<html>\n";
+  // htmlFile += "<head>\n";
+  // htmlFile += '<meta charset="UTF-8">\n';
+  // htmlFile += "<title>Code Editor Output</title>\n";
+  // htmlFile += "<style>\n";
+  // htmlFile += cssCode + "\n";
+  // htmlFile += "</style>\n";
+  // htmlFile += "</head>\n";
+  // htmlFile += "<body>\n";
+  // htmlFile += htmlCode + "\n";
+  // htmlFile += "<script>\n";
+  // htmlFile += jsCode + "\n";
+  // htmlFile += "</script>\n";
+  // htmlFile += "</body>\n";
+  // htmlFile += "</html>";
 
   // Set the HTML file contents to the output iframe
   var output = document.getElementById("output").contentWindow.document;
