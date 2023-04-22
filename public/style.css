@@ -190,11 +190,13 @@ footer {
 }
 .CodeMirror {
   height: 610px;
+  
 }
 .output-container{
   height: 40vh;
  
 }
+
 .output,
 #container-output{
   padding: 20px;
@@ -255,6 +257,12 @@ footer {
   color: #fff;
   background-color: #333;
   border: 1px solid #333;
+}
+
+.nav-link{
+  margin-bottom: 40px;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 
