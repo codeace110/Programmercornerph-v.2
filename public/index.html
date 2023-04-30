@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="codemirror.css">
   <link rel="stylesheet" href="darcul.css">
   <link rel="stylesheet" href="style.css">
-  <script src="video.js"></script>
 
 </head>
 
@@ -93,7 +92,7 @@
     <div class="col-md-6">
       <div>
         <div id="video-container">
-          <iframe width="100%" height="100%" src=""
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/j59qQ7YWLxw"
             title="JavaScript Tutorial for Beginners: Learn JavaScript in 1 Hour" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
@@ -147,12 +146,11 @@
   <script src="search.js"></script>
   <script src="script.js"></script>
   <script src="xml.js"></script>
+  <!-- <script type="module" src="./video.js"></script> -->
+  <script type="module">
 
+    import * as firebase from '../node_modules/firebase';
 
-  <script>
-    import { initializeApp } from "firebase/app";
-    import { getAnalytics } from "firebase/analytics";
-    import { getStorage } from "firebase/storage";
 
     const firebaseConfig = {
       apiKey: "AIzaSyASHm4DHXPNiem2nl25_Ax8jHHXRSVYC7A",
@@ -310,7 +308,6 @@
     }
     showVideos(currentVideoPage);
   </script>
-
 </body>
 
 </html>
