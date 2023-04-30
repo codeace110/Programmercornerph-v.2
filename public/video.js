@@ -1,17 +1,22 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyASHm4DHXPNiem2nl25_Ax8jHHXRSVYC7A",
-    authDomain: "programmerscornerph-2f1f9.firebaseapp.com",
-    databaseURL: "https://programmerscornerph-2f1f9-default-rtdb.firebaseio.com",
-    projectId: "programmerscornerph-2f1f9",
-    storageBucket: "programmerscornerph-2f1f9.appspot.com",
-    messagingSenderId: "1090743775951",
-    appId: "1:1090743775951:web:fb6d67af58b66fbfd8bdba",
-    measurementId: "G-BT751SCDZ2"
-};
-firebase.initializeApp(firebaseConfig);
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
 
-// Initialize Firestore
-const db = firebase.firestore();
+const firebaseConfig = {
+  apiKey: "AIzaSyD2kg_hE7okXqygzrzwL4t3CMu_795vYAA",
+  authDomain: "televition-c1430.firebaseapp.com",
+  projectId: "televition-c1430",
+  storageBucket: "televition-c1430.appspot.com",
+  messagingSenderId: "20868439842",
+  appId: "1:20868439842:web:19163478d910a346c6cf7b",
+  measurementId: "G-SJX7ZN6N63"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const storage = getStorage(app);
 
 function searchVideos(event) {
     event.preventDefault(); // prevent default form submission
