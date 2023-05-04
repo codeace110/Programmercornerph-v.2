@@ -11,6 +11,12 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/addon/hint/show-hint.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css"
+    integrity="sha512-EExyCrXMtKbF7ow9/e9A8WfjG18tDdVtSyuLhJ8w7+h05nEzmy+y67k66vSK8zl0W0jZfhGm99omuAaUbP8lDQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css" integrity="sha512-EExyCrXMtKbF7ow9/e9A8WfjG18tDdVtSyuLhJ8w7+h05nEzmy+y67k66vSK8zl0W0jZfhGm99omuAaUbP8lDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js" integrity="sha512-rpIVSslUkL6UWT2Q/Ol1zGUw4Jl4y4H4sXsM8B7WpxQkvlJxhCfKv+gy6ztwzTTrTfTUVJ8bwMIW9Xv1GVTtKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/htmlmixed/htmlmixed.min.js" integrity="sha512-jETsXs0LzyFV7QcL6UuW6/X8J6Uu0DBKzT6/DfXFnN7zmNpnhzJvgN3q1D4lWgygB0MY6yNlCHotX9RzzTWLZg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="codemirror.css">
   <link rel="stylesheet" href="darcul.css">
   <link rel="stylesheet" href="style.css">
@@ -20,9 +26,15 @@
 <body>
   <header>
     <nav class="navbar navbar-dark bg-dark fixed-top">
+
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Pr<img style="border-radius: 50%;" src="favicon.ico" alt="">grammer's Corner PH
         </a>
+        <form>
+          <label for="video-link-input"></label>
+          <input type="text" id="search-input" placeholder="javascript only">
+          <button type="submit">search video</button>
+        </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
           aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -61,11 +73,6 @@
                 </ul>
               </li>
             </ul>
-
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </div>
@@ -75,14 +82,19 @@
     <div class="col-md-6">
       <div id="container-editor" class="container">
         <div class="editors">
-          <div class="editor-tab active" id="html-tab">HTML</div>
+          <div class="editor-tab active" id="html-tab">HTMLMIXED</div>
           <div class="editor-tab" id="css-tab">CSS</div>
           <div class="editor-tab" id="js-tab">JavaScript</div>
           <button id="run-btn">Run</button>
           <button id="clear-btn" style="margin-right: 20px;">Clear</button>
         </div>
         <div class="editor-content">
-          <textarea id="html-editor" placeholder="HTML" class="language-html"><!--HTML--></textarea>
+          <textarea id="html-editor" placeholder="HTML" class="language-html"><!--HTMLMIXED
+You dont need to add tags for html, 
+header , body and footer
+You can type <h1>Hello world</h1>
+directly and Hit Run 
+--></textarea>
           <textarea id="css-editor" placeholder="CSS" class="language-css"><!--CSS--></textarea>
           <textarea id="js-editor" placeholder="JAVASCRIPT" class="language-javascript"><!--JavaScript--></textarea>
 
@@ -111,6 +123,10 @@
       <a href="#">3</a>
       <a href="#">Next</a>
     </div>
+    <div>
+    </div>
+
+
 
   </div>
   <footer>
@@ -142,16 +158,19 @@
   <script src="https://codemirror.net/mode/css/css.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"
+    integrity="sha512-rpIVSslUkL6UWT2Q/Ol1zGUw4Jl4y4H4sXsM8B7WpxQkvlJxhCfKv+gy6ztwzTTrTfTUVJ8bwMIW9Xv1GVTtKg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/php/php.min.js"
+    integrity="sha512-Yu47ECfkkpUyl9X3qH0U/CZ6UkRzUwK0Qm4lJH4i4d8o/53sXsXbLs1Bjf2QxlN/KwudIkw1shpOmqJyC0gB+Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/php/php.min.js" integrity="sha512-Yu47ECfkkpUyl9X3qH0U/CZ6UkRzUwK0Qm4lJH4i4d8o/53sXsXbLs1Bjf2QxlN/KwudIkw1shpOmqJyC0gB+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="hint.js"></script>
   <script src="search.js"></script>
   <script src="script.js"></script>
   <script src="xml.js"></script>
   <!-- <script type="module" src="./video.js"></script> -->
   <script type="module">
-
-    import * as firebase from '../node_modules/firebase';
-
-
     const firebaseConfig = {
       apiKey: "AIzaSyASHm4DHXPNiem2nl25_Ax8jHHXRSVYC7A",
       authDomain: "programmerscornerph-2f1f9.firebaseapp.com",
@@ -162,12 +181,10 @@
       appId: "1:1090743775951:web:fb6d67af58b66fbfd8bdba",
       measurementId: "G-BT751SCDZ2"
     };
+    firebase.initializeApp(firebaseConfig);
 
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const storage = getStorage(app);
+    // Initialize Firestore
+    const db = firebase.firestore();
 
     function searchVideos(event) {
       event.preventDefault(); // prevent default form submission
@@ -203,7 +220,8 @@
 
     function showVideos(page) {
       const startIndex = (page - 1) * videosPerPage;
-      const endIndex = startIndex + videosPerPage;
+      const endIndex = Math.min(startIndex + videosPerPage, 5);
+
 
       videosRef.get().then((doc) => {
         if (doc.exists) {
@@ -299,15 +317,13 @@
               pagination.appendChild(nextButton);
 
             }
-
-
           }
-
         }
       });
     }
     showVideos(currentVideoPage);
   </script>
 </body>
+
 
 </html>
